@@ -1,0 +1,14 @@
+services:
+  course_papers_backend:
+    container_name: course_papers
+    build:
+      context: ./src
+    ports:
+      - 8000:8000
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    ports: 
+      - 80:80

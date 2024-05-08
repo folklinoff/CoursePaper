@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: Students Course Papers Management System
+  version: 1.0.0
+paths:
+  /course_papers:
+    get:
+      operationId: getListOfCoursePapers
+      parameters:
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Course Paper List
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/course_papers_list"
+        "400":
+          description: Invalid sort_by parameter
+        "500":
+          description: Internal server error
+
+    post:
+      operationId: addNewCoursePaper
+      requestBody:
+        $ref: "#/components/schemas/create_course_paper_dto"
+      responses:
+        "200":
+          description: Course Paper
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/course_paper"
+        "400":
+          description: Invalid requestBody
+        "500":
+          description: Internal server error
+  /course_papers/{id}/stages:
+    get:
+      operationId: getListOfStagesForTheCoursePaper
+      parameters:
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Course Paper Stages List
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/stages_list"
+        "400":
+          description: Invalid sort_by parameter
+        "500":
+          description: Internal server error
+    post:
+      operationId: addNewStageToCoursePaper
+      requestBody:
+        $ref: "#/components/schemas/create_stage_dto"
+      responses:
+        "200":
+          description: Cours Paper Stage
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/stage"
+        "400":
+          description: Invalid requestBody
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    course_papers_list:
+      type: object
+      properties:
+        course_papers:
+          type: array
+          items:
+            $ref: "#/components/schemas/course_paper"
+    stages_list:
+      type: object
+      properties:
+        stages:
+          type: array
+          items:
+            $ref: "#/components/schemas/stage"
+    create_course_paper_dto:
+      type: object
+      properties:
+        name:
+          type: string
+        student_id:
+          type: string
+          format: uuid
+    course_paper:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        student_id:
+          type: string
+          format: uuid
+        course_paper_details:
+          $ref: "#/components/schemas/course_paper_details"
+    course_paper_details:
+      type: object
+      properties:
+        stage:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    create_stage_dto:
+      type: object
+      properties:
+        name:
+          type: string
+        stage:
+          type: string
+    stage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        stage_details:
+          $ref: "#/components/schemas/stage_details"
+    stage_details:
+      type: object
+      properties:
+        course_paper_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time

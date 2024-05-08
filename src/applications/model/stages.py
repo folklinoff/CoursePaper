@@ -1,0 +1,10 @@
+from enum import Enum
+
+
+class Stages(Enum):
+    PREPARING = "PREPARING"
+    IN_PROGRESS = "IN_PROGRESS"
+    ON_REVIEW = "ON_REVIEW"
+    REVIEWED = "REVIEWED"
+    BEING_FIXED = "BEING_FIXED"
+    COMPLETED = "COMPLETED"

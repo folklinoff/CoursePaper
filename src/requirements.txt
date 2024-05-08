@@ -1,0 +1,5 @@
+django
+djangorestframework
+django-rest-enumfield
+drf-spectacular
+APScheduler
