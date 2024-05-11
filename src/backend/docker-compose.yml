@@ -1,0 +1,8 @@
+services:
+  course_papers_backend:
+    image: $DOCKER_IMAGE_NAME
+    container_name: course_papers
+    build:
+      context: .
+    ports:
+      - 8000:8000

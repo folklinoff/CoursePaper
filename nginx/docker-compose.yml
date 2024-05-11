@@ -1,0 +1,12 @@
+services:
+  nginx:
+    image: $DOCKER_IMAGE_NAME
+    container_name: nginx
+    build:
+      context: .
+      args:
+        - BACKEND_HOST_IP
+    environment:
+      - BACKEND_HOST_IP
+    ports:
+      - 80:80
