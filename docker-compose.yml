@@ -2,7 +2,7 @@ services:
   course_papers_backend:
     container_name: course_papers
     build:
-      context: ./src
+      context: ./src/backend
     ports:
       - 8000:8000
 
