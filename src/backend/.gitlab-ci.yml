@@ -1,9 +1,9 @@
-build:
+backend-build:
   image: docker:cli
   stage: build
   only:
     changes:
-      - .
+      - src/backend
   services:
     - docker:dind
   variables:
@@ -11,15 +11,15 @@ build:
   before_script:
     - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
   script:
-    - docker build --pull -t $DOCKER_IMAGE_NAME .
+    - docker build --pull -t $DOCKER_IMAGE_NAME src/backend
     - docker push $DOCKER_IMAGE_NAME
 
-deploy:
+backend-deploy:
   image: ubuntu:latest
   stage: deploy
   only:
     changes:
-      - .
+      - src/backend
   variables:
     DOCKER_IMAGE_NAME: $DOCKERHUB_USER/$BACKEND_IMAGE_NAME
     CONTAINER_NAME: app

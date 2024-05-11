@@ -1,4 +1,4 @@
-build:
+nginx-build:
   image: docker:cli
   stage: build
   only:
@@ -14,7 +14,7 @@ build:
     - docker build --pull -t $DOCKER_IMAGE_NAME .
     - docker push $DOCKER_IMAGE_NAME
 
-deploy:
+nginx-deploy:
   image: ubuntu:latest
   stage: deploy
   only:
