@@ -11,7 +11,7 @@ backend-build:
   before_script:
     - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
   script:
-    - docker-compose build --pull src/backend
+    - docker-compose -f ./src/backend/docker-compose.yml build --pull
     - docker push $DOCKER_IMAGE_NAME
 
 backend-deploy:
