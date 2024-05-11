@@ -3,7 +3,7 @@ nginx-build:
   stage: build
   only:
     changes:
-      - .
+      - nginx
   services:
     - docker:dind
   variables:
@@ -11,7 +11,7 @@ nginx-build:
   before_script:
     - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
   script:
-    - docker build --pull -t $DOCKER_IMAGE_NAME .
+    - docker build --pull -t $DOCKER_IMAGE_NAME nginx
     - docker push $DOCKER_IMAGE_NAME
 
 nginx-deploy:
@@ -19,7 +19,7 @@ nginx-deploy:
   stage: deploy
   only:
     changes:
-      - .
+      - nginx
   variables:
     DOCKER_IMAGE_NAME: $DOCKERHUB_USER/$PROXY_IMAGE_NAME
     CONTAINER_NAME: app
