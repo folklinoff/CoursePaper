@@ -22,7 +22,7 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
     ),
     list = extend_schema(
         description='Create course paper',
-        parameters=[GetCoursePapersQuerySerializer],
+        parameters=[GetItemsSerializer],
         responses={
             status.HTTP_201_CREATED: CoursePapersListSerializer,
             status.HTTP_400_BAD_REQUEST: serializers.ReturnDict | serializers.ReturnList
@@ -38,6 +38,7 @@ from drf_spectacular.utils import extend_schema, extend_schema_view
     ),
     list_stages = extend_schema(
         description='Create course paper',
+        parameters=[GetItemsSerializer],
         responses={
             status.HTTP_201_CREATED: CoursePaperSerializer,
             status.HTTP_400_BAD_REQUEST: serializers.ReturnDict | serializers.ReturnList
@@ -56,10 +57,10 @@ class CoursePapersViewSet(ViewSet):
 
     @handle_error
     def list(self, request):
-        get_query_ser = GetCoursePapersQuerySerializer(data=request.query_params)
+        get_query_ser = GetItemsSerializer(data=request.query_params)
         if not get_query_ser.is_valid():
             return Response(get_query_ser.errors, status=status.HTTP_400_BAD_REQUEST)
-        course_papers = course_paper_service.list(get_query_ser.data['order_by'])
+        course_papers = course_paper_service.list(**get_query_ser.data)
         return Response(CoursePapersListSerializer(course_papers).data, status=status.HTTP_200_OK)
     
 
@@ -75,6 +76,23 @@ class CoursePapersViewSet(ViewSet):
 
     @action(detail=True)
     @handle_error
-    def list_stages(self, _, id):
-        stages = course_paper_service.list_stages(id)
+    def list_stages(self, request, id):
+        get_query_ser = GetItemsSerializer(data=request.query_params)
+        if not get_query_ser.is_valid():
+            return Response(get_query_ser.errors, status=status.HTTP_400_BAD_REQUEST)
+        stages = course_paper_service.list_stages(id, **get_query_ser.data)
         return Response(StagesListSerializer(stages).data, status=status.HTTP_200_OK)
+    
+
+    @action(detail=True)
+    @handle_error
+    def count(self, _):
+        count = course_paper_service.get_count()
+        return Response(CountMapSerializer(count).data, status=status.HTTP_200_OK)
+    
+
+    @action(detail=True)
+    @handle_error
+    def count_stages(self, _, id):
+        count = course_paper_service.get_stages_count(id)
+        return Response(CountMapSerializer(count).data, status=status.HTTP_200_OK)

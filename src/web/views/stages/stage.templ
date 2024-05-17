@@ -1,0 +1,138 @@
+package stages
+
+import (
+	"github.com/folklinoff/course_paper_frontend/internal/storage/models"
+	"github.com/folklinoff/course_paper_frontend/views/params"
+	"github.com/folklinoff/course_paper_frontend/views/pagination"
+	"fmt"
+)
+
+templ Body(tableWithPagination templ.Component) {
+	<div class="w-full bg-white p-4" id="main">
+		@Submit()
+		<br/>
+		<br/>
+		<br/>
+	</div>
+}
+
+func getCoursePaperID(script templ.ComponentScript) {
+
+}
+
+script GetID() {
+	
+}
+
+script UpdateLimit(newVal string) {
+	updateLimit(newVal);
+}
+
+templ DropdownOption(name string, path string) {
+	<li>
+		<button
+			hx-get={ path }
+			id={ fmt.Sprintf("dropdown_option_%s", name) }
+			onclick={ UpdateLimit(name) }
+			hx-vals={ params.MultipleItemsParams(&name, nil) }
+			hx-target="#table_with_pagination"
+			class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+		>{ name }</button>
+	</li>
+}
+
+templ Stage(stage *models.Stage) {
+	<tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+		<td class="p-4 w-4">
+			<div class="flex items-center">
+				<input id="checkbox-table-5" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+				<label for="checkbox-table-5" class="sr-only">checkbox</label>
+			</div>
+		</td>
+		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.ID }</td>
+		<td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{ stage.Name }</td>
+		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.CoursePaper.ID }</td>
+		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.CreatedAt.String() }</td>
+	</tr>
+}
+
+templ TableWrap(stages []*models.Stage) {
+	<div class="max-w-1xl mx-auto">
+		<div class="flex flex-col">
+			<div class="overflow-x-auto shadow-md sm:rounded-lg">
+				<div class="inline-block min-w-full align-middle">
+					<div class="overflow-hidden">
+						@StagesTableTemplate(stages)
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+templ StagesTableTemplate(stages []*models.Stage) {
+	<table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700" id="course_paper_list">
+		@TableHead()
+		@StagesTableBody(stages)
+	</table>
+}
+
+templ TableWithPagination(stage []*models.Stage, itemsCount int, displayParams *params.PageDisplayParams) {
+	<div id="table_with_pagination" class="align-middle">
+		@TableWrap(stage)
+		<br/>
+		@pagination.Pagination(itemsCount, displayParams, pagination.NewPageLinkComponent(displayParams.CurrentPage, "/course_papers"))
+	</div>
+}
+
+templ TableHead() {
+	<thead class="bg-gray-100 dark:bg-gray-700">
+		<tr>
+			<th scope="col" class="p-4">
+				<div class="flex items-center">
+					<input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+					<label for="checkbox-all" class="sr-only">checkbox</label>
+				</div>
+			</th>
+			@TableColumnHeaderTemplate("ID")
+			@TableColumnHeaderTemplate("Name")
+			@TableColumnHeaderTemplate("Course paper ID")
+			@TableColumnHeaderTemplate("Created At")
+		</tr>
+	</thead>
+}
+
+templ TableColumnHeaderTemplate(name string) {
+	<th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+		{ name }
+	</th>
+}
+
+templ StagesTableBody(stages []*models.Stage) {
+	<tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700" id="course_papers_table_body">
+		@StagesBodyFilling(stages)
+	</tbody>
+}
+
+templ StagesBodyFilling(stages []*models.Stage) {
+	for _, stage := range stages {
+		@Stage(stage)
+	}
+}
+
+templ Submit() {
+	<div>
+		<form class="flex mt-4">
+			<input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Student id" name="student_id"/>
+			<input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Name" name="name"/>
+			<button
+				class="shadow flex-no-shrink p-2 border-2 rounded text-teal border-teal"
+				type="submit"
+				hx-post="/course_papers"
+				hx-ext="json-enc"
+				hx-target="#course_paper_list"
+				hx-swap="beforeend"
+			>Add</button>
+		</form>
+	</div>
+}

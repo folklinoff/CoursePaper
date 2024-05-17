@@ -1,7 +1,0 @@
-server {
-  listen       80;
-  root         html;
-  location /api {
-    proxy_pass      http://:8000;
-  }
-}

@@ -1,0 +1,42 @@
+FRONTEND-build:
+  image: docker:cli
+  stage: build
+  only:
+    changes:
+      - src/web
+  services:
+    - docker:dind
+  variables:
+    DOCKER_IMAGE_NAME: $DOCKERHUB_USER/$FRONTEND_IMAGE_NAME
+  before_script:
+    - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+  script:
+    - docker-compose -f ./src/web/docker-compose.yml build --pull
+    - docker push $DOCKER_IMAGE_NAME
+
+FRONTEND-deploy:
+  image: ubuntu:latest
+  stage: deploy
+  only:
+    changes:
+      - src/web
+  variables:
+    DOCKER_IMAGE_NAME: $DOCKERHUB_USER/$FRONTEND_IMAGE_NAME
+    CONTAINER_NAME: app
+  before_script:
+    - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
+    - eval $(ssh-agent -s)
+    - echo lol
+    - env
+    - chmod 400 $SSH_PRIVATE_KEY
+    - ssh-add $SSH_PRIVATE_KEY
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cp $SSH_KNOWN_HOSTS ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh root@$FRONTEND_HOST_IP "docker rm -f $CONTAINER_NAME || 1"
+    - ssh root@$FRONTEND_HOST_IP "docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD"
+    - ssh root@$FRONTEND_HOST_IP "docker pull $DOCKER_IMAGE_NAME"
+    - ssh root@$FRONTEND_HOST_IP "docker logout"
+    - ssh root@$FRONTEND_HOST_IP "docker run -d -p 8000:8000 --name=$CONTAINER_NAME --rm $DOCKER_IMAGE_NAME"

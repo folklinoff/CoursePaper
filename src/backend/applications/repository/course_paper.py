@@ -11,8 +11,8 @@ class CoursePaperRepository:
         course_paper_to_model(course_paper).save()
     
     
-    def list(self, order_by) -> list[CoursePaper]:
-        return map(model_to_course_paper, list(CoursePaperModel.objects.all().order_by('course_paper_' + order_by)))
+    def list(self, limit, offset) -> list[CoursePaper]:
+        return map(model_to_course_paper, list(CoursePaperModel.objects.all()[offset:offset+limit]))
     
     
     def update_stage(self, course_paper_id: UUID, stage: Stages) -> None:
@@ -23,6 +23,10 @@ class CoursePaperRepository:
 
     def get(self, course_paper_id: UUID) -> CoursePaper:
         return model_to_course_paper(CoursePaperModel.objects.get(pk=course_paper_id))
+    
+    
+    def get_count(self) -> int:
+        return CoursePaperModel.objects.all().count()
 
 
 course_paper_repository = CoursePaperRepository()

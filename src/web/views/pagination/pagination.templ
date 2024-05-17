@@ -1,0 +1,84 @@
+package pagination
+
+import (
+	"strconv"
+	"github.com/folklinoff/course_paper_frontend/views/params"
+	"github.com/folklinoff/course_paper_frontend/tools"
+)
+
+templ Pagination(coursePapersCount int, displayParams *params.PageDisplayParams, link func(int) templ.Component) {
+	<nav aria-label="Page navigation" class="w-full max-w-1xl flex align-middle">
+		<ul class="inline-flex -space-x-px text-sm">
+			<li>
+				<a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+					<span class="sr-only">Previous</span>
+					<svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"></path>
+					</svg>
+				</a>
+			</li>
+			for i := 1; i <= getPagesNumber(coursePapersCount, displayParams.Limit); i++ {
+				@link(i)
+			}
+			<li>
+				<a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+					<span class="sr-only">Next</span>
+					<svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"></path>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</nav>
+}
+
+templ PageLinkTemplate(currentPage int, pageNumber int, path string) {
+	<li>
+		if currentPage == pageNumber {
+			<button
+				hx-get={ path }
+				hx-vals={ params.MultipleItemsParams(nil, tools.T(strconv.Itoa(pageNumber))) }
+				hx-ext="json-enc"
+				hx-target="#table_with_pagination"
+				aria-current="page"
+				class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+			>{ strconv.FormatInt(int64(pageNumber), 10) }</button>
+		} else {
+			<button
+				hx-get={ path }
+				hx-vals={ params.MultipleItemsParams(nil, tools.T(strconv.Itoa(pageNumber))) }
+				hx-ext="json-enc"
+				hx-target="#table_with_pagination"
+				class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+			>{ strconv.FormatInt(int64(pageNumber), 10) }</button>
+		}
+	</li>
+}
+
+func getPagesNumber(coursePapersCount int, itemsPerPage int) int {
+	pagesNumber := 1
+	if coursePapersCount != 0 {
+		pagesNumber = (coursePapersCount-1)/itemsPerPage + 1
+	}
+	return pagesNumber
+}
+
+func NewPageLinkComponent(currentPage int, path string) func(int) templ.Component {
+	return func(pageNumber int) templ.Component {
+		return PageLinkTemplate(currentPage, pageNumber, path)
+	}
+}
+
+templ DropDownMenu() {
+	<button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+		Display per page
+		<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+			<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
+		</svg>
+	</button>
+	<div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+		<ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+			{ children... }
+		</ul>
+	</div>
+}

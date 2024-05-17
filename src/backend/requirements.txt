@@ -3,3 +3,5 @@ djangorestframework
 django-rest-enumfield
 drf-spectacular
 APScheduler
+django-cors-headers
+uwsgi

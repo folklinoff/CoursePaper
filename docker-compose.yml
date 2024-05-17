@@ -1,0 +1,43 @@
+services:
+  nginx:
+    image: $DOCKER_IMAGE_NAME
+    networks:
+      - course_papers
+    hostname: proxy
+    container_name: nginx
+    build:
+      context: ./nginx
+      args:
+        - BACKEND_HOST_IP
+    environment:
+      - BACKEND_HOST_IP
+    ports:
+      - 80:80
+  course_papers_backend:
+    image: $DOCKER_IMAGE_NAME
+    hostname: backend
+    networks:
+      - course_papers
+    container_name: course_papers
+    build:
+      context: ./src/backend
+    ports:
+      - 8000:8000
+  course_papers_web:
+    image: $DOCKER_IMAGE_NAME
+    hostname: frontend
+    env_file:
+      - ./src/web/.env
+    environment:
+      - BACKEND_HOST_IP=proxy
+    networks:
+      - course_papers
+    container_name: course_papers_web
+    build:
+      context: ./src/web
+    ports:
+      - 3000:3000
+  
+networks:
+  course_papers:
+    driver: bridge

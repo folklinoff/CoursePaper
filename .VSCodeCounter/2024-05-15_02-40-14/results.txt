@@ -1,0 +1,122 @@
+Date : 2024-05-15 02:40:14
+Directory : /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app
+Total : 58 files,  2053 codes, 40 comments, 342 blanks, all 2435 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Go               |         15 |        965 |          9 |        124 |      1,098 |
+| Python           |         24 |        459 |         22 |        165 |        646 |
+| YAML             |          7 |        330 |          0 |         12 |        342 |
+| templ            |          3 |        174 |          0 |         17 |        191 |
+| Go Checksum File |          1 |         43 |          0 |          1 |         44 |
+| Docker           |          3 |         30 |          1 |         13 |         44 |
+| Go Module File   |          1 |         21 |          0 |          4 |         25 |
+| Properties       |          1 |         10 |          8 |          3 |         21 |
+| Makefile         |          1 |          8 |          0 |          3 |         11 |
+| pip requirements |          1 |          7 |          0 |          0 |          7 |
+| Ini              |          1 |          6 |          0 |          0 |          6 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                  |         58 |      2,053 |         40 |        342 |      2,435 |
+| . (Files)                                                                                                          |          3 |         56 |          0 |          6 |         62 |
+| nginx                                                                                                              |          3 |         56 |          8 |          7 |         71 |
+| nginx (Files)                                                                                                      |          2 |         46 |          0 |          4 |         50 |
+| nginx/conf                                                                                                         |          1 |         10 |          8 |          3 |         21 |
+| src                                                                                                                |         52 |      1,941 |         32 |        329 |      2,302 |
+| src/backend                                                                                                        |         29 |        675 |         23 |        175 |        873 |
+| src/backend (Files)                                                                                                |          5 |         84 |          2 |         12 |         98 |
+| src/backend/applications                                                                                           |         19 |        457 |          5 |        110 |        572 |
+| src/backend/applications (Files)                                                                                   |          6 |        108 |          3 |         23 |        134 |
+| src/backend/applications/decorators                                                                                |          1 |         12 |          0 |          2 |         14 |
+| src/backend/applications/migrations                                                                                |          2 |         27 |          1 |          8 |         36 |
+| src/backend/applications/model                                                                                     |          3 |         28 |          1 |          8 |         37 |
+| src/backend/applications/repository                                                                                |          3 |         65 |          0 |         32 |         97 |
+| src/backend/applications/serializers                                                                               |          3 |        180 |          0 |         20 |        200 |
+| src/backend/applications/services                                                                                  |          1 |         37 |          0 |         17 |         54 |
+| src/backend/course_papers                                                                                          |          5 |        134 |         16 |         53 |        203 |
+| src/web                                                                                                            |         23 |      1,266 |          9 |        154 |      1,429 |
+| src/web (Files)                                                                                                    |          5 |        127 |          0 |         13 |        140 |
+| src/web/cmd                                                                                                        |          1 |         36 |          0 |         11 |         47 |
+| src/web/internal                                                                                                   |         10 |        373 |          0 |         81 |        454 |
+| src/web/internal (Files)                                                                                           |          1 |         79 |          0 |         17 |         96 |
+| src/web/internal/app                                                                                               |          1 |         33 |          0 |         10 |         43 |
+| src/web/internal/handler                                                                                           |          3 |        102 |          0 |         24 |        126 |
+| src/web/internal/storage                                                                                           |          5 |        159 |          0 |         30 |        189 |
+| src/web/internal/storage (Files)                                                                                   |          1 |        131 |          0 |         20 |        151 |
+| src/web/internal/storage/dto                                                                                       |          2 |          9 |          0 |          4 |         13 |
+| src/web/internal/storage/models                                                                                    |          2 |         19 |          0 |          6 |         25 |
+| src/web/views                                                                                                      |          7 |        730 |          9 |         49 |        788 |
+| src/web/views (Files)                                                                                              |          6 |        674 |          9 |         43 |        726 |
+| src/web/views/params                                                                                               |          1 |         56 |          0 |          6 |         62 |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                           | language         | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/.gitlab-ci.yml                                       | YAML             |          6 |          0 |          2 |          8 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/Makefile                                             | Makefile         |          8 |          0 |          3 |         11 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/docker-compose.yml                                   | YAML             |         42 |          0 |          1 |         43 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/nginx/.gitlab-ci.yml                                 | YAML             |         41 |          0 |          2 |         43 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/nginx/Dockerfile                                     | Docker           |          5 |          0 |          2 |          7 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/nginx/conf/nginx.conf                                | Properties       |         10 |          8 |          3 |         21 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/.gitlab-ci.yml                           | YAML             |         41 |          0 |          2 |         43 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/Dockerfile                               | Docker           |         13 |          1 |          5 |         19 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/app_uwsgi.ini                            | Ini              |          6 |          0 |          0 |          6 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/__init__.py                 | Python           |          0 |          0 |          1 |          1 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/admin.py                    | Python           |          4 |          1 |          1 |          6 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/apps.py                     | Python           |          4 |          0 |          3 |          7 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/decorators/error_handler.py | Python           |         12 |          0 |          2 |         14 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/migrations/0001_initial.py  | Python           |         27 |          1 |          7 |         35 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/migrations/__init__.py      | Python           |          0 |          0 |          1 |          1 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/model/course_paper.py       | Python           |         10 |          0 |          2 |         12 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/model/stage.py              | Python           |         10 |          1 |          4 |         15 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/model/stages.py             | Python           |          8 |          0 |          2 |         10 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/models.py                   | Python           |         13 |          0 |          5 |         18 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/repository/course_paper.py  | Python           |         20 |          0 |         12 |         32 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/repository/mapper.py        | Python           |         33 |          0 |          8 |         41 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/repository/stage.py         | Python           |         12 |          0 |         12 |         24 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/serializers/course_paper.py | Python           |         17 |          0 |          8 |         25 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/serializers/openapi: 3.yml  | YAML             |        149 |          0 |          3 |        152 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/serializers/stage.py        | Python           |         14 |          0 |          9 |         23 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/services/course_paper.py    | Python           |         37 |          0 |         17 |         54 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/tests.py                    | Python           |          1 |          1 |          2 |          4 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/views.py                    | Python           |         86 |          1 |         11 |         98 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/__init__.py                | Python           |          0 |          0 |          1 |          1 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/asgi.py                    | Python           |         10 |          0 |          7 |         17 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/settings.py                | Python           |         86 |         16 |         35 |        137 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/urls.py                    | Python           |         28 |          0 |          3 |         31 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/wsgi.py                    | Python           |         10 |          0 |          7 |         17 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/manage.py                                | Python           |         17 |          1 |          5 |         23 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/requirements.txt                         | pip requirements |          7 |          0 |          0 |          7 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/.gitlab-ci.yml                               | YAML             |         41 |          0 |          2 |         43 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/Dockerfile                                   | Docker           |         12 |          0 |          6 |         18 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/cmd/main.go                                  | Go               |         36 |          0 |         11 |         47 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/docker-compose.yml                           | YAML             |         10 |          0 |          0 |         10 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/go.mod                                       | Go Module File   |         21 |          0 |          4 |         25 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/go.sum                                       | Go Checksum File |         43 |          0 |          1 |         44 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/app/app.go                          | Go               |         33 |          0 |         10 |         43 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/config.go                           | Go               |         79 |          0 |         17 |         96 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/handler/course_papers.go            | Go               |         69 |          0 |         14 |         83 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/handler/handler.go                  | Go               |         20 |          0 |          7 |         27 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/handler/middleware.go               | Go               |         13 |          0 |          3 |         16 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/dto/course_paper.go         | Go               |          5 |          0 |          2 |          7 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/dto/stage.go                | Go               |          4 |          0 |          2 |          6 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/models/course_paper.go      | Go               |         11 |          0 |          3 |         14 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/models/stage.go             | Go               |          8 |          0 |          3 |         11 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/storage.go                  | Go               |        131 |          0 |         20 |        151 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/course_paper.templ                     | templ            |         74 |          0 |          8 |         82 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/course_paper_templ.go                  | Go               |        279 |          3 |         11 |        293 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/index.templ                            | templ            |         94 |          0 |          7 |        101 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/index_templ.go                         | Go               |        193 |          3 |         10 |        206 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/params/page_display_params.go          | Go               |         56 |          0 |          6 |         62 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/sidenav.templ                          | templ            |          6 |          0 |          2 |          8 |
+| /Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/sidenav_templ.go                       | Go               |         28 |          3 |          5 |         36 |
+| Total                                                                                                              |                  |      2,053 |         40 |        342 |      2,435 |
++--------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

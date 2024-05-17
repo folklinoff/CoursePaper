@@ -1,0 +1,41 @@
+package views 
+
+templ Index(body templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>HTMX App</title>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"/>
+			<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css"/>
+			<script src="https://unpkg.com/htmx.org@1.9.9"></script>
+			<script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+			<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+			@Script()
+		</head>
+		<body class="bg-gray-200">
+			<div class="flex h-screen">
+				@SideNav()
+				@body
+			</div>
+		</body>
+	</html>
+}
+
+templ Script() {
+	<script>
+		let currentPage = 1;
+		let limit = 1;
+		let currentCoursePaperID = "";
+		function updateLimit(newlimit) {
+			limit = parseInt(newlimit);
+		}
+		function updateCurrentPage(newpage) {
+			currentPage = parseInt(newpage);
+		}
+		function updateCurrentCoursePaperID(newID) {
+			currentCoursePaperID = newID;
+		}
+	</script>
+}

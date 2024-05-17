@@ -17,3 +17,7 @@ class StageDetailsSerializer(serializers.Serializer):
 
 class StagesListSerializer(serializers.Serializer):
     stages = StageDetailsSerializer(many=True)
+
+
+class CountMapSerializer(serializers.Serializer):
+    count = serializers.IntegerField()

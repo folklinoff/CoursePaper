@@ -1,0 +1,66 @@
+"filename", "language", "YAML", "Python", "Docker", "Ini", "Makefile", "pip requirements", "Go Module File", "Go", "Go Checksum File", "templ", "Properties", "comment", "blank", "total"
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/.gitlab-ci.yml", "YAML", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/Makefile", "Makefile", 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 12
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/docker-compose.yml", "YAML", 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 43
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/nginx/.gitlab-ci.yml", "YAML", 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 43
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/nginx/Dockerfile", "Docker", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 7
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/nginx/conf/nginx.conf", "Properties", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 8, 3, 21
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/.gitlab-ci.yml", "YAML", 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 43
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/Dockerfile", "Docker", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 19
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/app_uwsgi.ini", "Ini", 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/admin.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 6
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/decorators/error_handler.py", "Python", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/migrations/0001_initial.py", "Python", 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 35
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/migrations/__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/model/course_paper.py", "Python", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 12
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/model/stage.py", "Python", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 15
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/model/stages.py", "Python", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/models.py", "Python", 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 18
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/repository/course_paper.py", "Python", 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 32
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/repository/mapper.py", "Python", 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 41
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/repository/stage.py", "Python", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 24
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/serializers/course_paper.py", "Python", 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 25
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/serializers/openapi: 3.yml", "YAML", 149, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 152
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/serializers/stage.py", "Python", 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 23
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/services/course_paper.py", "Python", 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 54
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/tests.py", "Python", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 4
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/applications/views.py", "Python", 0, 86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 11, 98
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/asgi.py", "Python", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 17
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/settings.py", "Python", 0, 86, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 35, 137
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/urls.py", "Python", 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 31
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/course_papers/wsgi.py", "Python", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 17
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/manage.py", "Python", 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5, 23
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/backend/requirements.txt", "pip requirements", 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 7
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/.gitlab-ci.yml", "YAML", 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 43
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/Dockerfile", "Docker", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 18
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/cmd/main.go", "Go", 0, 0, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 11, 47
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/docker-compose.yml", "YAML", 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/go.mod", "Go Module File", 0, 0, 0, 0, 0, 0, 21, 0, 0, 0, 0, 0, 4, 25
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/go.sum", "Go Checksum File", 0, 0, 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 1, 44
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/app/app.go", "Go", 0, 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 10, 43
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/config.go", "Go", 0, 0, 0, 0, 0, 0, 0, 79, 0, 0, 0, 0, 17, 96
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/handler/course_papers.go", "Go", 0, 0, 0, 0, 0, 0, 0, 122, 0, 0, 0, 0, 20, 142
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/handler/handler.go", "Go", 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 7, 27
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/handler/middleware.go", "Go", 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 3, 16
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/dto/course_paper.go", "Go", 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 2, 7
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/dto/stage.go", "Go", 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 2, 6
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/models/course_paper.go", "Go", 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 3, 14
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/models/stage.go", "Go", 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 3, 11
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/internal/storage/storage.go", "Go", 0, 0, 0, 0, 0, 0, 0, 131, 0, 0, 0, 0, 20, 151
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/tools/helper.go", "Go", 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 2, 6
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/course_papers/course_paper.templ", "templ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 153, 0, 0, 16, 169
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/course_papers/course_paper_templ.go", "Go", 0, 0, 0, 0, 0, 0, 0, 564, 0, 0, 0, 3, 19, 586
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/index.templ", "templ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0, 3, 42
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/index_templ.go", "Go", 0, 0, 0, 0, 0, 0, 0, 71, 0, 0, 0, 3, 6, 80
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/pagination/pagination.templ", "templ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 65, 0, 0, 6, 71
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/pagination/pagination_templ.go", "Go", 0, 0, 0, 0, 0, 0, 0, 171, 0, 0, 0, 3, 9, 183
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/params/helper.go", "Go", 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 3, 18
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/params/page_display.go", "Go", 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 0, 0, 6, 61
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/sidenav.templ", "templ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 2, 8
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/sidenav_templ.go", "Go", 0, 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 3, 5, 36
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/stages/stage.templ", "templ", 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 0, 0, 15, 150
+"/Users/folklinoff/Documents/Uni/CoursePaper/course_papers/app/src/web/views/stages/stage_templ.go", "Go", 0, 0, 0, 0, 0, 0, 0, 522, 0, 0, 0, 3, 18, 543
+"Total", "-", 330, 459, 30, 6, 9, 7, 21, 1892, 43, 398, 10, 46, 409, 3660
