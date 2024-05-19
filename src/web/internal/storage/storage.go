@@ -21,7 +21,7 @@ type Storage interface {
 	GetStagesCount(coursePaperID string) (int, error)
 	Get(limit int, offset int) ([]*models.CoursePaper, error)
 	Create(createCoursePaper dto.CreateCoursePaperDTO) (*models.CoursePaper, error)
-	UpdateStage(coursePaperID string, newStage dto.UpdateStageDTO) (*models.CoursePaper, error)
+	UpdateStage(coursePaperID string, newStage dto.UpdateStageDTO) (*models.Stage, error)
 	ListStages(coursePaperID string, limit int, offset int) ([]*models.Stage, error)
 }
 
@@ -87,7 +87,7 @@ func (s *storage) Create(createCoursePaper dto.CreateCoursePaperDTO) (*models.Co
 	return response, nil
 }
 
-func (s *storage) UpdateStage(coursePaperID string, newStage dto.UpdateStageDTO) (*models.CoursePaper, error) {
+func (s *storage) UpdateStage(coursePaperID string, newStage dto.UpdateStageDTO) (*models.Stage, error) {
 	requestBody, err := json.Marshal(newStage)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal request body: %w", err)
@@ -98,7 +98,7 @@ func (s *storage) UpdateStage(coursePaperID string, newStage dto.UpdateStageDTO)
 		return nil, err
 	}
 
-	response := &models.CoursePaper{}
+	response := &models.Stage{}
 	err = json.Unmarshal(rawBody, &response)
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal backend server response: %w", err)

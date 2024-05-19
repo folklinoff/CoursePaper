@@ -22,7 +22,7 @@ class CoursePapersService:
         real_stage = Stage(course_paper=course_paper, name=stage)
         stage_repository.create(real_stage)
         course_paper_repository.update_stage(real_stage.course_paper.id, real_stage.name.value)
-        return course_paper_repository.get(real_stage.course_paper.id)
+        return self.stage_model_to_details(real_stage)
 
 
     def stage_model_to_details(self, model: Stage) -> dict[str]:

@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func Index(body templ.Component) templ.Component {
+func Index(body templ.Component, count int) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,11 +23,15 @@ func Index(body templ.Component) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>HTMX App</title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css\"><link rel=\"stylesheet\" href=\"https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css\"><script src=\"https://unpkg.com/htmx.org@1.9.9\"></script><script src=\"https://unpkg.com/htmx.org/dist/ext/json-enc.js\"></script><script src=\"https://unpkg.com/flowbite@1.5.1/dist/flowbite.js\"></script>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>HTMX App</title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css\"><link rel=\"stylesheet\" href=\"https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css\"><script src=\"https://unpkg.com/htmx.org@1.9.9\"></script><script src=\"https://unpkg.com/htmx.org/dist/ext/json-enc.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = Script().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = SetCount(count).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -43,7 +47,7 @@ func Index(body templ.Component) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><script src=\"https://unpkg.com/flowbite@1.5.1/dist/flowbite.js\"></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -67,7 +71,7 @@ func Script() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script>\n\t\tlet currentPage = 1;\n\t\tlet limit = 1;\n\t\tlet currentCoursePaperID = \"\";\n\t\tfunction updateLimit(newlimit) {\n\t\t\tlimit = parseInt(newlimit);\n\t\t}\n\t\tfunction updateCurrentPage(newpage) {\n\t\t\tcurrentPage = parseInt(newpage);\n\t\t}\n\t\tfunction updateCurrentCoursePaperID(newID) {\n\t\t\tcurrentCoursePaperID = newID;\n\t\t}\n\t</script>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script>\n\t\tlet limit = 20;\n\t\tfunction updateLimit(newlimit) { \n\t\t\tlimit = parseInt(newlimit);\n\t\t}\n\t\tlet currentPage = 1;\n\t\tfunction updateCurrentPage(newpage) { \n\t\t\tcurrentPage = parseInt(newpage);\n\t\t}\n\t\tlet currentCoursePaperID = \"\";\n\t\tfunction updateCurrentCoursePaperID(newID) { \n\t\t\tcurrentCoursePaperID = newID;\n\t\t}\n\t\tlet count = 0;\n\t\tfunction updateCount(newCount) { \n\t\t\tcount = newCount;\n\t\t}\n\t\tfunction trackcont() { \n\t\t\tlet addButton = document.querySelector(\"#add-new-item\");\n\t\t\tcount++;\n\t\t\tif (count > limit) {\n\t\t\t\tcount--;\n\t\t\t}\n\t\t\tif (count == limit) {\n\t\t\t\taddButton.setAttribute(\"hx-target\", \"#non-existant\");\n\t\t\t}\n\t\t}\n\t</script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -76,4 +80,14 @@ func Script() templ.Component {
 		}
 		return templ_7745c5c3_Err
 	})
+}
+
+func SetCount(currCount int) templ.ComponentScript {
+	return templ.ComponentScript{
+		Name: `__templ_SetCount_192b`,
+		Function: `function __templ_SetCount_192b(currCount){updateCount(currCount);
+}`,
+		Call:       templ.SafeScript(`__templ_SetCount_192b`, currCount),
+		CallInline: templ.SafeScriptInline(`__templ_SetCount_192b`, currCount),
+	}
 }

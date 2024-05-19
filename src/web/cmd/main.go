@@ -42,5 +42,4 @@ func main() {
 		defer cancel()
 		app.Shutdown(ctx)
 	}
-
 }

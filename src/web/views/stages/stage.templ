@@ -7,35 +7,30 @@ import (
 	"fmt"
 )
 
-templ Body(tableWithPagination templ.Component) {
+templ Body(tableWithPagination templ.Component, id string) {
 	<div class="w-full bg-white p-4" id="main">
-		@Submit()
+		<h1>Add new stage </h1>
+		@Submit(id)
 		<br/>
 		<br/>
 		<br/>
+		@tableWithPagination
 	</div>
-}
-
-func getCoursePaperID(script templ.ComponentScript) {
-
-}
-
-script GetID() {
-	
 }
 
 script UpdateLimit(newVal string) {
 	updateLimit(newVal);
 }
 
-templ DropdownOption(name string, path string) {
+templ DropdownOption(name string, id string) {
 	<li>
 		<button
-			hx-get={ path }
+			hx-get={ fmt.Sprintf("/main/course_papers/%s/stages", id) }
 			id={ fmt.Sprintf("dropdown_option_%s", name) }
 			onclick={ UpdateLimit(name) }
 			hx-vals={ params.MultipleItemsParams(&name, nil) }
-			hx-target="#table_with_pagination"
+			hx-target="#main"
+			hx-swap="outerHTML"
 			class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
 		>{ name }</button>
 	</li>
@@ -51,7 +46,7 @@ templ Stage(stage *models.Stage) {
 		</td>
 		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.ID }</td>
 		<td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">{ stage.Name }</td>
-		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.CoursePaper.ID }</td>
+		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.CoursePaper }</td>
 		<td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{ stage.CreatedAt.String() }</td>
 	</tr>
 }
@@ -77,11 +72,18 @@ templ StagesTableTemplate(stages []*models.Stage) {
 	</table>
 }
 
-templ TableWithPagination(stage []*models.Stage, itemsCount int, displayParams *params.PageDisplayParams) {
+templ TableWithPagination(stage []*models.Stage, itemsCount int, displayParams *params.PageDisplayParams, id string) {
 	<div id="table_with_pagination" class="align-middle">
+		@pagination.DropDownMenu() {
+			for _, limit := range []string{"10", "20", "50", "100"} {
+				@DropdownOption(limit, id)
+			}
+		}
+		<br/>
+		<br/>
 		@TableWrap(stage)
 		<br/>
-		@pagination.Pagination(itemsCount, displayParams, pagination.NewPageLinkComponent(displayParams.CurrentPage, "/course_papers"))
+		@pagination.Pagination(itemsCount, displayParams, pagination.NewPageLinkComponent(displayParams.CurrentPage, fmt.Sprintf("/main/course_papers/%s/stages", id), "#main"))
 	</div>
 }
 
@@ -120,15 +122,14 @@ templ StagesBodyFilling(stages []*models.Stage) {
 	}
 }
 
-templ Submit() {
+templ Submit(id string) {
 	<div>
 		<form class="flex mt-4">
-			<input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Student id" name="student_id"/>
-			<input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Name" name="name"/>
+			<input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="New stage" name="stage"/>
 			<button
 				class="shadow flex-no-shrink p-2 border-2 rounded text-teal border-teal"
 				type="submit"
-				hx-post="/course_papers"
+				hx-post={ fmt.Sprintf("/main/course_papers/%s/stages", id) }
 				hx-ext="json-enc"
 				hx-target="#course_paper_list"
 				hx-swap="beforeend"

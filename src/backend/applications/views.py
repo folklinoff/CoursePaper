@@ -70,8 +70,8 @@ class CoursePapersViewSet(ViewSet):
         update_stage_dto_ser = UpdateStageDTOSerializer(data=request.data)
         if not update_stage_dto_ser.is_valid():
             return Response(update_stage_dto_ser.errors, status=status.HTTP_400_BAD_REQUEST)
-        course_paper = course_paper_service.update_stage(id, Stages(update_stage_dto_ser.data['stage']))
-        return Response(CoursePaperSerializer(course_paper).data, status=status.HTTP_200_OK)
+        stage = course_paper_service.update_stage(id, Stages(update_stage_dto_ser.data['stage']))
+        return Response(StageDetailsSerializer(stage).data, status=status.HTTP_200_OK)
     
 
     @action(detail=True)

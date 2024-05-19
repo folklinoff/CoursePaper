@@ -12,7 +12,6 @@ import (
 	"github.com/folklinoff/course_paper_frontend/views/stages"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	humanlog "github.com/tiramiseb/echo-humanlog"
 )
 
 type CoursePaperHandler struct {
@@ -26,14 +25,13 @@ func NewCoursePaperHandler(storage storage.Storage) *CoursePaperHandler {
 }
 
 func (h *CoursePaperHandler) Register(e *echo.Echo) {
-	e.Logger.SetOutput(humanlog.New(e.Logger.Output()))
 	e.Use(middleware.LoggerWithConfig(LoggerConfig))
 	e.Use(middleware.Logger())
-	e.GET("/", echo.HandlerFunc(h.Index), RedirectWithQueryParams)
-	e.GET("/course_papers", echo.HandlerFunc(h.Get), RedirectWithQueryParams)
-	e.POST("/course_papers", echo.HandlerFunc(h.Post))
-	e.GET("/course_papers/:id/stages", echo.HandlerFunc(h.ListStages), RedirectWithQueryParams)
-	e.POST("/course_papers/:id/stages", echo.HandlerFunc(h.UpdateStage))
+	e.GET("/main/", echo.HandlerFunc(h.Index), RedirectWithQueryParams)
+	e.GET("/main/course_papers", echo.HandlerFunc(h.Get), RedirectWithQueryParams)
+	e.POST("/main/course_papers", echo.HandlerFunc(h.Post))
+	e.GET("/main/course_papers/:id/stages", echo.HandlerFunc(h.ListStages), RedirectWithQueryParams)
+	e.POST("/main/course_papers/:id/stages", echo.HandlerFunc(h.UpdateStage))
 }
 
 func (h *CoursePaperHandler) Index(c echo.Context) error {
@@ -60,7 +58,7 @@ func (h *CoursePaperHandler) Index(c echo.Context) error {
 				coursePapersCount,
 				params,
 			),
-		)).
+		), len(coursePapers)).
 		Render(c.Request().Context(), c.Response().Writer)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, fmt.Errorf("failed to get course papers: %w", err))
@@ -131,7 +129,9 @@ func (h *CoursePaperHandler) ListStages(c echo.Context) error {
 			stagesList,
 			stagesCount,
 			params,
+			c.Param("id"),
 		),
+		c.Param("id"),
 	).Render(c.Request().Context(), c.Response().Writer)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusInternalServerError, err)
@@ -140,5 +140,19 @@ func (h *CoursePaperHandler) ListStages(c echo.Context) error {
 }
 
 func (h *CoursePaperHandler) UpdateStage(c echo.Context) error {
+	request := dto.UpdateStageDTO{}
+	if err := c.Bind(&request); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Errorf("failed to unmarshal request: %w", err))
+	}
+	c.Response().Header().Set("Content-Type", "text/html")
+	stage, err := h.storage.UpdateStage(c.Param("id"), request)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Errorf("failed to create course paper: %w", err).Error())
+	}
+	err = stages.Stage(stage).Render(c.Request().Context(), c.Response().Writer)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Errorf("failed to get course papers: %w", err))
+	}
+
 	return nil
 }
