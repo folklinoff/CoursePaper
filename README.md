@@ -12,7 +12,7 @@
 Из корневой папки проекта запустить команду
 
 ```
-docker-compose up --build
+docker-compose up
 ```
 
 ## Swagger

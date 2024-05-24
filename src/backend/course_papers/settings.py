@@ -64,6 +64,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Управление курсовыми работами",
+    "DESCRIPTION": "Данный сервис предназначен для отслеживания этапов выполнения курсовой работы",
+    "VERSION": "1.0.0",
+}
+
 ROOT_URLCONF = 'course_papers.urls'
 TEMPLATES = [
     {

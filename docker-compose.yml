@@ -1,10 +1,9 @@
 services:
   nginx:
-    image: $DOCKER_IMAGE_NAME
     networks:
       - course_papers
     hostname: proxy
-    container_name: nginx
+    container_name: proxy
     build:
       context: ./nginx
       args:
@@ -14,7 +13,6 @@ services:
     ports:
       - 80:80
   course_papers_backend:
-    image: $DOCKER_IMAGE_NAME
     hostname: backend
     networks:
       - course_papers
@@ -24,7 +22,6 @@ services:
     ports:
       - 8000:8000
   course_papers_web:
-    image: $DOCKER_IMAGE_NAME
     hostname: frontend
     env_file:
       - ./src/web/.env
